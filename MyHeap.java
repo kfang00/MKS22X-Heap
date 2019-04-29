@@ -8,15 +8,26 @@ public class MyHeap {
           hold = data[index];
           data[index] = data[(index * 2) + 1];
           data[(index * 2) + 1] = hold;
+          pushDown(data,size,((index * 2) + 1));
         }
         else {
-
+          hold = data[index];
+          data[index] = data[(index * 2) + 2];
+          data[(index * 2) + 2] = hold;
+          pushDown(data,size,((index * 2) + 2));
         }
       }
     }
     else if (((data[index] * 2) + 1) <= size) {
       if (((data[index] * 2) + 1) > data[index]) {
+          hold = data[index];
+          data[index] = data[(index * 2) + 1];
+          data[(index * 2) + 1] = hold;
+          pushDown(data,size,((index * 2) + 1));
       }
+    }
+    else {
+      return;
     }
   }
      - size  is the number of elements in the data array.  
