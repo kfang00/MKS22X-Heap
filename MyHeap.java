@@ -1,3 +1,4 @@
+import java.util.*;
 public class MyHeap {
 //We discussed these 2 methods already:
 /*- size  is the number of elements in the data array.
@@ -7,7 +8,7 @@ public class MyHeap {
   private static void pushDown(int[]data,int size,int index) {
     int hold = 0;
     if ((((index * 2) + 1) <= size) && (((index * 2) + 2) <= size)) {
-      if ((data[(index * 2) + 1] > data[index]) || ((data[(index * 2) + 2] > data[index]) ) {
+      if ((data[(index * 2) + 1] > data[index]) || ((data[(index * 2) + 2] > data[index]) )) {
         if (data[(index * 2) + 1] > data[(index * 2) + 2]) {
           hold = data[index];
           data[index] = data[(index * 2) + 1];
@@ -40,10 +41,11 @@ public class MyHeap {
     - precondition: index is between 0 and data.length-1 inclusive.*/
     if (index > 0) {
       if (data[(index - 1)/2] < data[index]) {
+        int hold = 0;
         hold = data[index];
         data[index] = data[(index - 1)/2];
         data[(index - 1)/2] = hold;
-        pushUp(data,((index - 1)/2);
+        pushUp(data,((index - 1)/2));
       }
     }
     else {
@@ -70,7 +72,7 @@ public class MyHeap {
      converting it into a heap
      removing the largest value n-1 times (remove places at end of the sub-array).*/
      int bound = data.length - 1;
-     ing hold = 0;
+     int hold = 0;
      heapify(data);
      for (int a = 0; a < data.length; a++) {
        hold = data[0];
@@ -116,4 +118,5 @@ public class MyHeap {
   
 }
 
-}
+
+
