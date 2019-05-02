@@ -13,6 +13,7 @@ public class MyHeap {
           hold = data[index];
           data[index] = data[(index * 2) + 1];
           data[(index * 2) + 1] = hold;
+          //System.out.println(toString(data));
           pushDown(data,size,((index * 2) + 1));
         }
         else {
@@ -23,8 +24,8 @@ public class MyHeap {
         }
       }
     }
-    else if (((data[index] * 2) + 1) < size) {
-      if (((data[index] * 2) + 1) > data[index]) {
+    else if (((index * 2) + 1) < size) {
+      if (((data[index] * 2) + 1) < data[index]) {
           hold = data[index];
           data[index] = data[(index * 2) + 1];
           data[(index * 2) + 1] = hold;
@@ -63,7 +64,9 @@ public class MyHeap {
       //- convert the array into a valid heap. [ should be O(n)
       for (int a = (data.length - 1); a >= 0; a--) {
         pushDown(data, data.length, a);
+        //HeapPrinter.print(data);
       }
+      //HeapPrinter.print(data);
   }
 
 
@@ -74,13 +77,21 @@ public class MyHeap {
      int bound = data.length - 1;
      int hold = 0;
      heapify(data);
+     //HeapPrinter.print(data);
      for (int a = 0; a < data.length; a++) {
        hold = data[0];
        data[0] = data[bound];
        data[bound] = hold;
        pushDown(data, bound, 0);
+       //HeapPrinter.print(data);
        bound--;
      }
+     if (data[0] > data[1]) {
+       hold = data[0];
+       data[0] = data[1];
+       data[1] = hold;
+     }
+     //System.out.println(toString(data));
   }
 
   public static String toString(int[] data) {
@@ -92,7 +103,7 @@ public class MyHeap {
   }
 
   public static void main(String[] args){
-    int[] a = {0, 2, 6, 1300, 22,53,34,55,661,61,71,61,51};
+    int[] a = {0, 6, 1300, 22,53,34,55,661,38,999999,997849,9985,61,71,61,51};
     heapsort(a);
     System.out.println(toString(a));
     HeapPrinter.print(a);
