@@ -57,13 +57,26 @@ public class MyHeap {
 
 
 //We will discuss this today:
-  public static void heapify(int[]) {
+  public static void heapify(int[] data) {
       //- convert the array into a valid heap. [ should be O(n)
+      for (int a = (data.length - 1); a > 0; a--) {
+        pushUp(data, a);
+      }
   }
 
 
-  public static void heapsort(int[])
-    - sort the array [ should be O(nlogn) ] :
+  public static void heapsort(int[] data) {
+    /*- sort the array [ should be O(nlogn) ] :
      converting it into a heap
-     removing the largest value n-1 times (remove places at end of the sub-array).
+     removing the largest value n-1 times (remove places at end of the sub-array).*/
+     int bound = data.length - 1;
+     ing hold = 0;
+     heapify(data);
+     for (int a = 0; a < data.length; a++) {
+       hold = data[0];
+       data[0] = data[bound];
+       data[bound] = hold;
+       pushDown(data, bound, 0);
+     }
+  }
 }
